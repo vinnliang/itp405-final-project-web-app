@@ -56,6 +56,15 @@
     </div>
   </br><hr></br>
     <div class="container">
+			@if ($errors->any())
+    	<div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    	</div>
+			@endif
     <form action="/profile/fantasyteam/fantasyfinal" method="GET">
       <div class="form-group row">
         <label for="qb-id" class="col-sm-3 col-form-label text-sm-right">Quarterback:</label>

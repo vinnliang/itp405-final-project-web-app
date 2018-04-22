@@ -54,7 +54,6 @@ class LoginController extends Controller
       $user->name = $googleUser->getName();
       $user->email = $googleUser->getEmail();
     }
-    //dd($googleUser);
     $user->google_token = $googleUser->token;
     $user->google_refresh_token = $googleUser->refreshToken;
     $user->save();

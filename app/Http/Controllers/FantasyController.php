@@ -47,7 +47,16 @@ class FantasyController extends Controller
     public function final(Request $request)
     {
       $id = Auth::id();
-      $formData = $request->all();
+      $formData = $request->validate([
+        'qb-id' => 'required',
+        'rb1-id' => 'required',
+        'rb2-id' => 'required',
+        'wr1-id' => 'required',
+        'wr2-id' => 'required',
+        'wr3-id' => 'required',
+        'te-id' => 'required',
+        'kicker-id' => 'required'
+      ]);
       $search = DB::table('fantasyroster')
       ->join('players', 'players.player_id', '=', 'fantasyroster.player_id')
       ->join('nfl_team', 'nfl_team.team_id', '=', 'players.team_id')
