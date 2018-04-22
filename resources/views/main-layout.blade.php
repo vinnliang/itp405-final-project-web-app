@@ -18,13 +18,6 @@
               <li class = "nav-item">
                   <a href = "/logout" class="nav-link">Logout</a>
               </li>
-          @else
-              <li class = "nav-item">
-                  <a href = "/login" class="nav-link">Login</a>
-              </li>
-              <li class = "nav-item">
-                  <a href = "/Signup" class="nav-link">Signup</a>
-              </li>
           @endif
       </ul>
       @yield('content')
