@@ -56,6 +56,13 @@
     </div>
   </br><hr></br>
     <div class="container">
+			<div class="flash-message">
+    		@foreach (['danger', 'warning', 'success', 'info'] as $msg)
+      		@if(Session::has('alert-' . $msg))
+						<p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+      		@endif
+    		@endforeach
+  		</div>
 			@if ($errors->any())
     	<div class="alert alert-danger">
         <ul>
@@ -81,7 +88,7 @@
       <div class="form-group row">
         <label for="rb1-id" class="col-sm-3 col-form-label text-sm-right">Running Back 1:</label>
         <div class="col-sm-9">
-          <select name="rb1" id="rb1-id" class="form-control">
+          <select name="rb1" id="rb1-id" class="form-control" class="preferenceSelect">
             <option value="" selected>-- All --</option>
             @foreach ($rblist as $rb)
             <option value="{{$rb->player_id}}">{{$rb->FName}} {{$rb->LName}} -------- {{$rb->team_name}}</option>
@@ -93,7 +100,7 @@
       <div class="form-group row">
         <label for="rb2-id" class="col-sm-3 col-form-label text-sm-right">Running Back 2:</label>
         <div class="col-sm-9">
-          <select name="rb2" id="rb2-id" class="form-control">
+          <select name="rb2" id="rb2-id" class="form-control" class="preferenceSelect">
             <option value="" selected>-- All --</option>
             @foreach ($rblist as $rb)
             <option value="{{$rb->player_id}}">{{$rb->FName}} {{$rb->LName}} -------- {{$rb->team_name}}</option>
@@ -105,7 +112,7 @@
       <div class="form-group row">
         <label for="wr1-id" class="col-sm-3 col-form-label text-sm-right">Wide Receiver 1:</label>
         <div class="col-sm-9">
-          <select name="wr1" id="wr1-id" class="form-control">
+          <select name="wr1" id="wr1-id" class="form-control" class="preferenceSelect">
             <option value="" selected>-- All --</option>
             @foreach ($wrlist as $wr)
             <option value="{{$wr->player_id}}">{{$wr->FName}} {{$wr->LName}} -------- {{$wr->team_name}}</option>
@@ -117,7 +124,7 @@
       <div class="form-group row">
         <label for="wr2-id" class="col-sm-3 col-form-label text-sm-right">Wide Receiver 2:</label>
         <div class="col-sm-9">
-          <select name="wr2" id="wr2-id" class="form-control">
+          <select name="wr2" id="wr2-id" class="form-control" class="preferenceSelect">
             <option value="" selected>-- All --</option>
             @foreach ($wrlist as $wr)
             <option value="{{$wr->player_id}}">{{$wr->FName}} {{$wr->LName}} -------- {{$wr->team_name}}</option>
@@ -129,7 +136,7 @@
       <div class="form-group row">
         <label for="wr3-id" class="col-sm-3 col-form-label text-sm-right">Wide Receiver 3:</label>
         <div class="col-sm-9">
-          <select name="wr3" id="wr3-id" class="form-control">
+          <select name="wr3" id="wr3-id" class="form-control" class="preferenceSelect">
             <option value="" selected>-- All --</option>
             @foreach ($wrlist as $wr)
             <option value="{{$wr->player_id}}">{{$wr->FName}} {{$wr->LName}} -------- {{$wr->team_name}}</option>

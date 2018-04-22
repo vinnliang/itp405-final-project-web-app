@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Redirect;
 use Auth;
 class FantasyController extends Controller
 {
@@ -47,16 +48,29 @@ class FantasyController extends Controller
     public function final(Request $request)
     {
       $id = Auth::id();
-      $formData = $request->validate([
-        'qb-id' => 'required',
-        'rb1-id' => 'required',
-        'rb2-id' => 'required',
-        'wr1-id' => 'required',
-        'wr2-id' => 'required',
-        'wr3-id' => 'required',
-        'te-id' => 'required',
-        'kicker-id' => 'required'
+
+      $data = $request->validate([
+        'qb' => 'required',
+        'rb1' => 'required',
+        'rb2' => 'required',
+        'wr1' => 'required',
+        'wr2' => 'required',
+        'wr3' => 'required',
+        'te' => 'required',
+        'kicker' => 'required'
       ]);
+
+      if($data['rb1'] == $data['rb2']
+      || $data['wr1'] == $data['wr2']
+      || $data['wr1'] == $data['wr3']
+      || $data['wr2'] == $data['wr3'])
+      {
+        $request->session()->flash('alert-danger', 'Cannot insert multiple instances of the same player');
+        return Redirect::to('/profile/fantasyteam');
+      }
+
+      $formData = $data;
+
       $search = DB::table('fantasyroster')
       ->join('players', 'players.player_id', '=', 'fantasyroster.player_id')
       ->join('nfl_team', 'nfl_team.team_id', '=', 'players.team_id')
