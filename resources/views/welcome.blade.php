@@ -69,7 +69,7 @@
       <div class="background-div">
       	<div class="container">
       		<div class="row">
-      			<h1 class="col-12 mt-4 mb-4 text-center">Welcome to the NFL Fantasy PLayer Database</h1>
+      			<h1 class="col-12 mt-4 mb-4 text-center">Welcome to the NFL Fantasy Player Database</h1>
       		</div> <!-- .row -->
       	</div> <!-- .container -->
         <hr>
